@@ -165,3 +165,17 @@ B.Sc. Geology
 GeoAI • Machine Learning • Mineral Exploration • Earth System Analysis
 
 </p>
+
+---
+
+---
+
+## 🌐 Live Interactive Project
+
+🟢 **GeoAI Mineral Prospectivity Mapping**
+
+🔗 https://bikrantmishrageo2005.github.io/mineral-prospectivity-mapping/
+
+This interactive web page presents the GeoAI mineral prospectivity mapping project, including global mineral zone visualization and machine learning based geological prospectivity analysis.
+
+---
