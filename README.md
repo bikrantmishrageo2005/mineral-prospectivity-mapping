@@ -1,3 +1,4 @@
+<o align="center">
 # ⛏️ Mineral Prospectivity Mapping using GeoAI
 
 Machine Learning • Economic Geology • Mineral Exploration • GeoAI
