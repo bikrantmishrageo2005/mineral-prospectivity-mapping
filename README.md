@@ -1,142 +1,167 @@
-<o align="center">
-# ⛏️ Mineral Prospectivity Mapping using GeoAI
+<p align="center">
 
-Machine Learning • Economic Geology • Mineral Exploration • GeoAI
+# 🌍⛏️  Mineral Prospectivity Mapping using GeoAI
+
+### Machine Learning • Economic Geology • Mineral Exploration • GeoAI
+
+</p>
 
 ---
 
 ## 📌 Project Overview
 
-Mineral deposits rarely occur randomly. Their formation is strongly controlled by geological structures, hydrothermal alteration, host rock composition, and geochemical anomalies.
+Mineral deposits rarely occur randomly. Their formation is strongly controlled by geological structures, hydrothermal alteration, host rock composition, and geochemical anomalies. Understanding these geological relationships is a fundamental goal of mineral exploration.
 
-This project demonstrates how **machine learning can support geological interpretation** by identifying areas that may have higher mineral prospectivity. The goal is not to claim mineral discovery, but to illustrate how geological indicators can be integrated into a simple data-driven workflow.
+This project explores how **machine learning can assist geological interpretation** by highlighting areas that may show higher mineral prospectivity. The goal is not to claim mineral discovery, but to demonstrate how geological indicators can be integrated within a simple data-driven framework.
 
-The project combines geological reasoning with a **Random Forest classification model** to simulate an early-stage mineral exploration analysis.
+The workflow combines geological reasoning with a **Random Forest classification model**, simulating an early-stage exploration analysis commonly used in academic research and mineral exploration studies.
 
 ---
 
 ## 🎯 Project Objectives
 
-- Demonstrate how geological indicators influence mineral prospectivity  
-- Apply machine learning to rank areas based on geological favorability  
-- Visualize potential mineral zones using a prospectivity heatmap  
-- Evaluate model behavior using feature importance and precision–recall analysis  
+• Demonstrate how geological indicators influence mineral prospectivity  
+• Apply machine learning to evaluate mineral favorability  
+• Visualize mineral potential using prospectivity heatmaps  
+• Identify the most influential geological factors controlling predictions  
 
 ---
 
 ## 🪨 Geological Indicators Used
 
-The model incorporates several geological proxies commonly considered during mineral exploration:
+The model incorporates several geological proxies commonly used in mineral exploration:
 
-- **Distance to Fault (km)**  
-  Structural controls strongly influence hydrothermal fluid flow.
+**Distance to Fault (km)**  
+Structural proximity often controls hydrothermal fluid flow and mineral deposition.
 
-- **Fault Influence Factor**  
-  Represents the decay of structural influence away from major faults.
+**Fault Influence Factor**  
+Represents the exponential decay of hydrothermal influence away from major structures.
 
-- **Alteration Index**  
-  Indicates hydrothermal alteration intensity.
+**Alteration Index**  
+Acts as a proxy for hydrothermal alteration intensity around mineral systems.
 
-- **Geochemical Anomaly Strength**  
-  Represents enrichment of mineral-related elements.
+**Geochemical Anomaly Strength**  
+Represents enrichment of elements commonly associated with mineralization.
 
-- **Lithology (Host Rock Type)**  
-  Different rock types have different mineralization potential.
+**Lithology (Host Rock Type)**  
+Different rock types host different mineral systems and influence mineral potential.
 
-These variables were selected for **geological meaning rather than mathematical convenience**.
+These features were selected for their **geological meaning rather than purely mathematical convenience**.
 
 ---
 
 ## 🧠 Modeling Approach
 
-A **Random Forest classifier** was used to estimate mineral prospectivity.
+A **Random Forest machine learning classifier** was used to estimate mineral prospectivity.
 
-Key aspects of the modeling workflow include:
+Workflow steps include:
 
-- Generation of a synthetic geological dataset
-- Encoding lithological categories
-- Handling class imbalance using balanced class weighting
-- Model validation using **Stratified K-Fold Cross-Validation**
-- Evaluation using **Precision–Recall analysis**, which is more suitable for rare-event problems such as mineral discovery
+• Dataset generation based on geological parameters  
+• Lithology encoding for categorical geological variables  
+• Model training using Random Forest classification  
+• Cross-validation using **Stratified K-Fold validation**  
+• Evaluation using **Precision–Recall analysis**
+
+Precision–Recall metrics are particularly useful when analyzing **rare events**, such as mineral deposits.
 
 ---
 
 ## 📊 Model Evaluation
 
-The model performance was evaluated using a **Precision–Recall Curve**, which measures how effectively the model identifies mineralized zones while minimizing false positives.
+The model performance was evaluated using a **Precision–Recall Curve**, which measures the ability of the model to identify mineralized zones while reducing false predictions.
+
+<p align="center">
 
 ![Precision Recall Curve](precision_recall_curve_mineral_model.png)
+
+</p>
 
 ---
 
 ## 📈 Feature Importance Analysis
 
-Feature importance analysis highlights which geological indicators most strongly influence the model's predictions.
+Feature importance analysis highlights which geological indicators most strongly influence mineral prospectivity predictions.
+
+<p align="center">
 
 ![Feature Importance](feature_importance_mineral_model.png)
+
+</p>
 
 ---
 
 ## 🗺️ Mineral Prospectivity Map
 
-A prospectivity heatmap was generated to visualize how mineral potential varies with structural proximity and alteration intensity.
+A prospectivity heatmap was generated to visualize how mineral potential changes with structural proximity and alteration intensity.
+
+<p align="center">
 
 ![Mineral Prospectivity Map](mineral_prospectivity_map.png)
 
-Bright regions represent areas where geological conditions are more favorable for mineralization under the modeled scenario.
+</p>
+
+Bright regions indicate zones where geological conditions become more favorable for mineralization under the modeled scenario.
 
 ---
 
 ## ⚠️ Important Note
 
-This project **does not claim mineral discovery**.  
-It is intended purely as an **academic demonstration** of how machine learning can support geological interpretation during early exploration stages.
+This project **does not claim mineral discovery**.
+
+It is intended as an **academic demonstration** showing how geological reasoning and machine learning can be integrated during early-stage mineral exploration studies.
 
 Real mineral exploration requires integration of:
 
-- Field mapping
-- Geophysical surveys
-- Geochemical sampling
-- Drilling data
-- Expert geological interpretation
+• Field mapping  
+• Geophysical surveys  
+• Geochemical sampling  
+• Drilling data  
+• Geological interpretation  
 
 ---
 
 ## 🚀 Future Scope
 
-This workflow could be expanded using real geological datasets by incorporating:
+With real geological datasets, this workflow could be extended by integrating:
 
-- Fault and structural GIS layers  
-- Remote sensing alteration indices  
-- Multi-element geochemical surveys  
-- Spatial validation techniques  
-- Integration with GIS-based mineral systems modeling  
+• GIS-based structural datasets  
+• Remote sensing alteration mapping  
+• Multi-element geochemical datasets  
+• Spatial mineral systems modeling  
+• Advanced geospatial machine learning techniques
 
 ---
 
 ## 🛠 Tools & Technologies
 
-- Python  
-- NumPy  
-- Pandas  
-- Scikit-Learn  
-- Matplotlib  
+Python  
+NumPy  
+Pandas  
+Scikit-Learn  
+Matplotlib  
 
 ---
 
 ## 📚 References
 
-1. Bonham-Carter, G. F. (1994). *Geographic Information Systems for Geoscientists*.  
-2. Carranza, E. J. M. (2009). *Geochemical Anomaly and Mineral Prospectivity Mapping*.  
-3. Kuhn, M. & Johnson, K. (2013). *Applied Predictive Modeling*.  
-4. Breiman, L. (2001). Random Forests. *Machine Learning Journal*.
+Bonham-Carter, G. F. (1994)  
+*Geographic Information Systems for Geoscientists.*
+
+Carranza, E. J. M. (2009)  
+*Geochemical Anomaly and Mineral Prospectivity Mapping.*
+
+Breiman, L. (2001)  
+*Random Forests — Machine Learning Journal.*
 
 ---
+
+<p align="center">
 
 ## 👤 Author
 
 **Bikrant Kumar Mishra**  
 B.Sc. Geology  
 
-Interests:  
-GeoAI • Mineral Exploration • Machine Learning • Earth System Analysis
+GeoAI • Machine Learning • Mineral Exploration • Earth System Analysis
+
+</p>
