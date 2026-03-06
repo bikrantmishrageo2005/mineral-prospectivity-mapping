@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GeoAI Mineral Prospectivity Mapping</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+color:white;
+background:#000;
+background-image:url("https://eoimages.gsfc.nasa.gov/images/imagerecords/74000/74218/world.topo.bathy.200412.3x5400x2700.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+.overlay{
+background:rgba(0,0,0,0.7);
+min-height:100vh;
+}
+
+/* header */
+
+header{
+text-align:center;
+padding:120px 20px;
+}
+
+header h1{
+font-size:60px;
+margin-bottom:20px;
+animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px #00ffd5; }
+to{ text-shadow:0 0 35px #00ffd5; }
+}
+
+header p{
+font-size:20px;
+color:#d0d0d0;
+}
+
+/* glass container */
+
+.section{
+width:80%;
+margin:40px auto;
+text-align:center;
+padding:40px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,255,200,0.2);
+}
+
+.section h2{
+font-size:34px;
+margin-bottom:20px;
+border-bottom:2px solid #00ffd5;
+display:inline-block;
+padding-bottom:10px;
+}
+
+.section p{
+font-size:18px;
+line-height:1.7;
+color:#dddddd;
+}
+
+/* map */
+
+#map{
+height:600px;
+width:100%;
+border-radius:12px;
+margin-top:30px;
+box-shadow:0 0 40px rgba(0,255,200,0.5);
+}
+
+/* legend */
+
+.legend{
+margin-top:15px;
+font-size:16px;
+}
+
+/* output images */
+
+.output img{
+width:80%;
+margin-top:30px;
+border-radius:10px;
+box-shadow:0 0 25px rgba(0,255,200,0.4);
+}
+
+/* button */
+
+.button{
+margin-top:40px;
+}
+
+.button a{
+text-decoration:none;
+background:#00ffd5;
+color:black;
+padding:15px 40px;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.button a:hover{
+background:#00c2a5;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:#000;
+color:#aaa;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="overlay">
+
+<header>
+
+<h1>⛏️ GeoAI Mineral Prospectivity Mapping</h1>
+
+<p>
+Machine Learning • Economic Geology • Mineral Exploration
+</p>
+
+</header>
+
+
+<div class="section">
+
+<h2>Project Overview</h2>
+
+<p>
+
+Mineral deposits are strongly controlled by geological structures,
+hydrothermal alteration zones, lithology, and geochemical anomalies.
+
+This project demonstrates how machine learning can support geological
+interpretation by highlighting areas that may show higher mineral
+prospectivity.
+
+Rather than claiming mineral discovery, the model acts as a decision
+support tool for identifying exploration targets.
+
+</p>
+
+</div>
+
+
+<div class="section">
+
+<h2>Global Mineral Zones</h2>
+
+<div id="map"></div>
+
+<div class="legend">
+
+<span style="color:orange">●</span> Potential Mineral Zone
+
+</div>
+
+</div>
+
+
+<div class="section output">
+
+<h2>Model Outputs</h2>
+
+<img src="mineral_prospectivity_map.png">
+
+<img src="feature_importance_mineral_model.png">
+
+<img src="precision_recall_curve_mineral_model.png">
+
+</div>
+
+
+<div class="section">
+
+<h2>Data Context</h2>
+
+<p>
+
+The mineral locations displayed on the map represent well-known
+global mineral provinces and are included for visualization purposes.
+The machine learning model simulates geological exploration indicators
+such as structural proximity, alteration intensity, and geochemical
+anomalies to demonstrate mineral prospectivity analysis.
+
+</p>
+
+</div>
+
+
+<div class="section">
+
+<h2>Technology Stack</h2>
+
+<p>
+
+Python • NumPy • Pandas • Scikit-Learn • Matplotlib • Leaflet.js • GeoAI Modeling
+
+</p>
+
+</div>
+
+
+<div class="section">
+
+<h2>Explore the Full Project</h2>
+
+<p>
+
+The full machine learning workflow, geological interpretation,
+and mineral prospectivity modeling are available in the GitHub
+repository.
+
+</p>
+
+<div class="button">
+
+<a href="https://github.com/bikrantmishrageo2005/mineral-prospectivity-mapping">
+
+View Full Project
+
+</a>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<p>
+Created by Bikrant Kumar Mishra | GeoAI Research Portfolio
+</p>
+
+</footer>
+
+</div>
+
+
+<script>
+
+var map = L.map('map').setView([20,0],2);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+maxZoom:18
+}).addTo(map);
+
+
+var minerals = [
+
+["Copper Deposit", -22.9, -68.2, "Chile"],
+["Gold Belt", -26.2, 27.9, "South Africa"],
+["Iron Ore Region", -23.7, 133.8, "Australia"],
+["Nickel Zone", 61.5, 105.3, "Russia"],
+["Lithium Triangle", -24.2, -66.3, "Argentina / Bolivia"]
+
+];
+
+
+minerals.forEach(function(m){
+
+L.circleMarker([m[1],m[2]],{
+
+radius:7,
+color:"orange",
+fillOpacity:0.9
+
+}).addTo(map)
+
+.bindPopup(
+
+"<b>"+m[0]+"</b><br>Region: "+m[3]+"<br>Potential Mineral Zone"
+
+);
+
+});
+
+</script>
+
+</body>
+
+</html>
